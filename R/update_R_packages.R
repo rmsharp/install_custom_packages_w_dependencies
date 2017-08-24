@@ -42,7 +42,7 @@ get_deps <- function(path) {
 #' \code{library} directory. It could be a user directory.
 make_dependency_list <- function(source_names, path) {
   dependencies <- character(0)
-  for (name in souce_names) {
+  for (name in source_names) {
     dependencies <- unique(c(dependencies, get_deps(paste0(path, name))))
   }
   dependencies

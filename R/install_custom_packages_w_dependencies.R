@@ -23,11 +23,15 @@
 #' @param path character vector of length one having the directory path to
 #' where new version of the custom package exists.
 get_deps <- function(path) {
-  dcf <- read.dcf(file.path(path, "DESCRIPTION"))
-  jj <- intersect(c("Depends", "Imports", "Suggests"), colnames(dcf))
-  val <- unlist(strsplit(dcf[, jj], ","), use.names = FALSE)
-  val <- gsub("\\s.*", "", trimws(val))
-  val[val != "R"]
+  if (file.exists(file.path(path, "DESCRIPTION"))) {
+    dcf <- read.dcf(file.path(path, "DESCRIPTION"))
+    jj <- intersect(c("Depends", "Imports", "Suggests"), colnames(dcf))
+    val <- unlist(strsplit(dcf[, jj], ","), use.names = FALSE)
+    val <- gsub("\\s.*", "", trimws(val))
+    val <- val[val != "R"]
+  } else {
+    val <- character(0)
+  }
 }
 #' Make dependency list
 #'

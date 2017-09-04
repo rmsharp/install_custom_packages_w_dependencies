@@ -104,7 +104,7 @@ source_names <- c("rmsutilityr", "animalr", "snprcspf", "snprcpath",
 
 node_name <- Sys.info()[["nodename"]]
 if (toupper(node_name) == "VGER" | toupper(node_name) == "BOOMER") {
-  source_path <- "d:Labkey data/"
+  source_path <- "d:/Labkey data/"
   install_path <- "c:/R Library/"
 } else {
   install_path <-
